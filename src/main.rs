@@ -16,7 +16,8 @@ enum TokenType{
     Subtract,
     End,
     Value,
-    WhiteSpace
+    WhiteSpace,
+    Identifier
 }
 
 #[derive(Debug)]
@@ -67,6 +68,13 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
            };
            tokens.push(current_token)
         }
+        else if ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z'{
+            current_token = Token{
+                ttype: TokenType::Identifier,
+                value: String::from(ch)
+            };
+            tokens.push(current_token)
+        }
         else if ch == ';'{
             current_token = Token{
                 ttype: TokenType::End,
@@ -77,7 +85,7 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
         else {
             current_token = Token{
                 ttype : TokenType::Value,
-                value : String::from("value")
+                value : String::from(ch)
             };
             tokens.push(current_token)
         }
@@ -86,7 +94,7 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
 }
 
 fn main(){
-   let tokens = tokenize("x + y;").unwrap();
+   let tokens = tokenize("y * x;").unwrap();
    for token in tokens{
        println!("{:?}", token)
    }
