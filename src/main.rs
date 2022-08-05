@@ -1,5 +1,7 @@
 #![allow(dead_code, unused)]
 
+
+use std::io;
 use std::thread::current;
 
 #[derive(Debug)]
@@ -43,7 +45,7 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
         else if ch == '-' {
             current_token = Token{
                 ttype: TokenType::Subtract,
-                value: String::from("-")
+                value: String::from("-") 
             };
             tokens.push(current_token)
         }
@@ -94,10 +96,9 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
 }
 
 fn main(){
-   let tokens = tokenize("y * x;").unwrap();
+   let tokens = tokenize("x + y;").unwrap();
    for token in tokens{
        println!("{:?}", token)
    }
-   println!("Tokenizer")
 }
 
