@@ -3,6 +3,7 @@
 
 use std::io;
 use std::thread::current;
+use std::any;
 
 #[derive(Debug)]
 enum Error{
@@ -17,7 +18,7 @@ enum TokenType{
     Divide,
     Subtract,
     End,
-    Value,
+    Integer,
     WhiteSpace,
     Identifier
 }
@@ -84,9 +85,9 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
             };
             tokens.push(current_token)
         }
-        else {
+        else if ch >= '0' && ch <= '9'{
             current_token = Token{
-                ttype : TokenType::Value,
+                ttype : TokenType::Integer,
                 value : String::from(ch)
             };
             tokens.push(current_token)
@@ -96,9 +97,11 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
 }
 
 fn main(){
-   let tokens = tokenize("x + y;").unwrap();
+    let num: i32 = 46454645;
+   let tokens = tokenize("x + z - y * j / 9;").unwrap();
    for token in tokens{
        println!("{:?}", token)
    }
+   println!("Hello World!")
 }
 
