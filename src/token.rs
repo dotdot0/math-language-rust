@@ -7,12 +7,12 @@ use std::thread::current;
 use std::any;
 
 #[derive(Debug)]
-enum Error{
+pub enum Error{
     NotValidToken
 }
 
 #[derive(Debug)]
-enum TokenType{
+pub enum TokenType{
     Start,
     Add,
     Multiply,
@@ -25,12 +25,12 @@ enum TokenType{
 }
 
 #[derive(Debug)]
-struct Token{
+pub struct Token{
     ttype: TokenType,
     value: String
 }
 
-fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
+pub fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
     let mut current_token: Token = Token{
         ttype: TokenType::Start,
         value: String::from("codestart")
