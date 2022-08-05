@@ -1,3 +1,4 @@
+
 #![allow(dead_code, unused)]
 
 
@@ -26,7 +27,7 @@ enum TokenType{
 #[derive(Debug)]
 struct Token{
     ttype: TokenType,
-    value: String,
+    value: String
 }
 
 fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
@@ -94,15 +95,5 @@ fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
         }
     }
     Ok(tokens)
-}
-
-fn main(){
-    let num: i32 = 46454645;
-   let tokens = tokenize("x + z - y * j / 9;").unwrap();
-   for token in tokens{
-       println!("{:?}", token)
-   }
-   println!("Hello World!");
-   println!("Tokenizer")
 }
 
