@@ -24,8 +24,8 @@ pub enum TokenType{
 
 #[derive(Debug)]
 pub struct Token{
-    ttype: TokenType,
-    value: String
+    pub ttype: TokenType,
+    pub value: String
 }
 
 pub fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
