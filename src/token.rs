@@ -19,7 +19,7 @@ pub enum TokenType{
     End,
     Integer,
     WhiteSpace,
-    Identifier
+    Identifier,
 }
 
 #[derive(Debug)]
