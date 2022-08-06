@@ -3,8 +3,7 @@ mod token;
 use crate::token::tokenize;
 
 fn main(){
-    let num: i32 = 46454645;
-   let tokens = tokenize("x + z - y * j / 9;").unwrap();
+   let tokens = tokenize("x - z + 9 * 8;").unwrap();
    for token in tokens{
        println!("{:?}", token)
    }
