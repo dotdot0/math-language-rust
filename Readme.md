@@ -1,1 +1,9 @@
-A math language return in rust
+#A interpreter for a math language
+
+
+Currently supported operations
+- "+"
+- "-"
+- "/"
+- "*"
+- Variable Declaration

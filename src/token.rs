@@ -37,6 +37,7 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
         value: String::from("codestart")
     };
     let mut tokens = Vec::new();
+    let mut column: i32 = 0;
     for ch in code.chars(){
         if ch == '+'{
             current_token = Token{
@@ -44,6 +45,8 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
                 value: String::from("+")
             };  
             tokens.push(current_token);
+            column += 1;
+            println!("{column}")
         }
         else if ch == '-' {
             current_token = Token{
