@@ -1,4 +1,4 @@
-#A interpreter for a math language
+A interpreter for a math language
 
 
 Currently supported operations
