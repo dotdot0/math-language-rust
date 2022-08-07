@@ -1,17 +1,26 @@
 #![allow(dead_code, unused)]
 mod token;
+use std::io;
 use crate::token::{tokenize, Token, TokenType};
 
 fn main(){
-   let maintoken = Token{
-     ttype : TokenType::Multiply,
-     value : String::from("*")
-   };
-   let tokens = tokenize("6 + 9;").unwrap();
-   for token in tokens{
+   loop{
+     println!(">");
+     let mut code = String::new();
+     io::stdin().read_line(&mut code).expect("Unable To Read Code");
+     if code == " "{
+       println!("Please Enter Code.")
+     }
+     else if code == "quit"{
+         break;
+     }
+   else{
+     let tokens = tokenize(&code).unwrap();
+     for token in tokens{
        println!("{:?}", token)
+     }
    }
-   println!("{:?}", maintoken);
+   }
    
 }
 

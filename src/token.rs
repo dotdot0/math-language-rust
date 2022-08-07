@@ -28,7 +28,7 @@ pub struct Token{
     pub value: String
 }
 
-pub fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
+pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
     let mut current_token: Token = Token{
         ttype: TokenType::Start,
         value: String::from("codestart")
@@ -87,7 +87,7 @@ pub fn tokenize(code: &str) -> Result<Vec<Token>, Error>{
         else if ch >= '0' && ch <= '9'{
             current_token = Token{
                 ttype : TokenType::Integer,
-                value : String::from(ch)
+                    value : String::from(ch)
             };
             tokens.push(current_token)
         }
