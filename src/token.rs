@@ -103,7 +103,8 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             current_token = Token{
                 ttype : TokenType::Lparen,
                 value : String::from("(")
-            }
+            };
+            tokens.push(current_token)
         }
     }
     Ok(tokens)

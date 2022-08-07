@@ -11,7 +11,7 @@ fn main(){
      if code == " "{
        continue;
      }
-     else if code == ""{
+     else if code == "&"{
        break;
      }
      else{
@@ -23,4 +23,3 @@ fn main(){
    }
    
 }
-
