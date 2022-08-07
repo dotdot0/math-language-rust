@@ -20,6 +20,8 @@ pub enum TokenType{
     Integer,
     WhiteSpace,
     Identifier,
+    Lparen,
+    Rparen
 }
 
 #[derive(Debug)]
@@ -87,9 +89,21 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
         else if ch >= '0' && ch <= '9'{
             current_token = Token{
                 ttype : TokenType::Integer,
-                    value : String::from(ch)
+                value : String::from(ch)
             };
             tokens.push(current_token)
+        }
+        else if ch == ')'{
+            current_token = Token{
+                ttype : TokenType::Rparen,
+                value : String::from(")")
+            }
+        }
+        else if ch == '('{
+            current_token = Token{
+                ttype : TokenType::Lparen,
+                value : String::from("(")
+            }
         }
     }
     Ok(tokens)

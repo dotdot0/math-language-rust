@@ -5,21 +5,21 @@ use crate::token::{tokenize, Token, TokenType};
 
 fn main(){
    loop{
+     let mut code: String = String::new();
      println!(">");
-     let mut code = String::new();
-     io::stdin().read_line(&mut code).expect("Unable To Read Code");
+     io::stdin().read_line(&mut code).expect("Unable To Read Source Code");
      if code == " "{
-       println!("Please Enter Code.")
+       continue;
      }
-     else if code == "quit"{
-         break;
+     else if code == ""{
+       break;
      }
-   else{
-     let tokens = tokenize(&code).unwrap();
-     for token in tokens{
-       println!("{:?}", token)
+     else{
+       let tokens = tokenize(&code).unwrap();
+       for token in tokens{
+         println!("{:?}", token)
+       }
      }
-   }
    }
    
 }
