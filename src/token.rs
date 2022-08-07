@@ -21,7 +21,8 @@ pub enum TokenType{
     WhiteSpace,
     Identifier,
     Lparen,
-    Rparen
+    Rparen,
+    Assign
 }
 
 #[derive(Debug)]
@@ -103,6 +104,13 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             current_token = Token{
                 ttype : TokenType::Lparen,
                 value : String::from("(")
+            };
+            tokens.push(current_token)
+        }
+        else if ch == '='{
+            current_token = Token{
+                ttype : TokenType::Assign,
+                value : String::from("=")
             };
             tokens.push(current_token)
         }
