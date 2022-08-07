@@ -8,10 +8,10 @@ fn main(){
      let mut code: String = String::new();
      println!(">");
      io::stdin().read_line(&mut code).expect("Unable To Read Source Code");
-     if code == " "{
+     if code == ""{
        continue;
      }
-     else if code == "&"{
+     else if code.trim() == "q"{
        break;
      }
      else{
