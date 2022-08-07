@@ -66,14 +66,14 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
         };
            tokens.push(current_token)
         }
-        else if ch == ' ' {
+        else if ch.is_whitespace(){
            current_token = Token{
                   ttype: TokenType::WhiteSpace,
                   value: String::from("WhiteSpace")
            };
            tokens.push(current_token)
         }
-        else if ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z'{
+        else if ch.is_alphabetic(){
             current_token = Token{
                 ttype: TokenType::Identifier,
                 value: String::from(ch)
@@ -87,7 +87,7 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             };
             tokens.push(current_token)
         }
-        else if ch >= '0' && ch <= '9'{
+        else if ch.is_numeric(){
             current_token = Token{
                 ttype : TokenType::Integer,
                 value : String::from(ch)

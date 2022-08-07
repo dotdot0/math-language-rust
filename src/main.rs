@@ -15,7 +15,7 @@ fn main(){
        break;
      }
      else{
-       let tokens = tokenize(&code).unwrap();
+       let tokens = tokenize(&code.trim().to_string()).unwrap();
        for token in tokens{
          println!("{:?}", token)
        }
