@@ -4,12 +4,12 @@ use std::io;
 use std::thread::current;
 use std::any;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum Error{
     NotValidToken
 }
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub enum TokenType{
     Start,
     Add,
@@ -37,7 +37,6 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
         value: String::from("codestart")
     };
     let mut tokens = Vec::new();
-    let mut column: i32 = 0;
     for ch in code.chars(){
         if ch == '+'{
             current_token = Token{
@@ -45,8 +44,6 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
                 value: String::from("+")
             };  
             tokens.push(current_token);
-            column += 1;
-            println!("{column}")
         }
         else if ch == '-' {
             current_token = Token{
@@ -74,7 +71,6 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
                   ttype: TokenType::WhiteSpace,
                   value: String::from("WhiteSpace")
            };
-           tokens.push(current_token)
         }
         else if ch.is_alphabetic(){
             current_token = Token{

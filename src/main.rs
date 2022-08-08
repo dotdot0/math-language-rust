@@ -1,14 +1,16 @@
 #![allow(dead_code, unused)]
 mod token;
+mod parser;
 use std::io;
 use crate::token::{tokenize, Token, TokenType};
+use crate::parser::parse;
 
 fn main(){
    loop{
      let mut code: String = String::new();
      println!(">");
      io::stdin().read_line(&mut code).expect("Unable To Read Source Code");
-     if code == ""{
+     if code == " "{
        continue;
      }
      else if code.trim() == "q"{
@@ -16,9 +18,7 @@ fn main(){
      }
      else{
        let tokens = tokenize(&code.trim().to_string()).unwrap();
-       for token in tokens{
-         println!("{:?}", token)
-       }
+       parse(tokens)
      }
    }
    
