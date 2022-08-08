@@ -17,7 +17,7 @@ pub enum TokenType{
     Divide,
     Subtract,
     End,
-    Integer,
+    Number,
     WhiteSpace,
     Identifier,
     Lparen,
@@ -88,7 +88,7 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
         }
         else if ch.is_numeric(){
             current_token = Token{
-                ttype : TokenType::Integer,
+                ttype : TokenType::Number,
                 value : String::from(ch)
             };
             tokens.push(current_token)

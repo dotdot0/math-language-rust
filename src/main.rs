@@ -18,7 +18,9 @@ fn main(){
      }
      else{
        let tokens = tokenize(&code.trim().to_string()).unwrap();
-       parse(tokens)
+       for ast in parse(tokens){
+         println!("{:?}", ast)
+       }
      }
    }
    
