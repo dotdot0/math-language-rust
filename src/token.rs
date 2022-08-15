@@ -1,6 +1,5 @@
 #![allow(dead_code, unused)]
 
-use core::num::dec2flt::number::Number;
 use std::io;
 use std::thread::current;
 use std::any;
@@ -18,7 +17,7 @@ pub enum TokenType{
     Divide,
     Subtract,
     End,
-    Number,
+    Number ,
     WhiteSpace,
     Lparen,
     Rparen,
@@ -32,8 +31,8 @@ pub struct Token{
 }
 
 impl Token{
-    fn parse_number(&self) -> i32{
-        let num: Option<i32> = None;
+    pub fn parse_number(&self) -> i32{
+        let mut num: Option<i32> = None;
         if self.ttype == TokenType::Number{
             num = Some(self.value.parse().unwrap())
         }
