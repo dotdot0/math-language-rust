@@ -1,5 +1,6 @@
 #![allow(dead_code, unused)]
 
+use core::num::dec2flt::number::Number;
 use std::io;
 use std::thread::current;
 use std::any;
@@ -9,7 +10,7 @@ pub enum Error{
     NotValidToken
 }
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum TokenType{
     Start,
     Add,
@@ -19,16 +20,25 @@ pub enum TokenType{
     End,
     Number,
     WhiteSpace,
-    Identifier,
     Lparen,
     Rparen,
     Assign
 }
 
-#[derive(Debug)]
+#[derive(Debug,Clone)]
 pub struct Token{
     pub ttype: TokenType,
     pub value: String
+}
+
+impl Token{
+    fn parse_number(&self) -> i32{
+        let num: Option<i32> = None;
+        if self.ttype == TokenType::Number{
+            num = Some(self.value.parse().unwrap())
+        }
+        num.unwrap() 
+    }
 }
 
 pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
@@ -72,13 +82,6 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
                   value: String::from("WhiteSpace")
            };
         }
-        else if ch.is_alphabetic(){
-            current_token = Token{
-                ttype: TokenType::Identifier,
-                value: String::from(ch)
-            };
-            tokens.push(current_token)
-        }
         else if ch == ';'{
             current_token = Token{
                 ttype: TokenType::End,
@@ -116,4 +119,5 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
     }
     Ok(tokens)
 }
+
 

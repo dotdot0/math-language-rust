@@ -17,11 +17,9 @@ fn main(){
        break;
      }
      else{
-       let tokens = tokenize(&code.trim().to_string()).unwrap();
-       for ast in parse(tokens){
-         println!("{:?}", ast)
+       let mut tokens = tokenize(&code.trim().to_string()).unwrap();
+       println!("{:?}", parse(&tokens))
        }
      }
    }
-   
-}
+
