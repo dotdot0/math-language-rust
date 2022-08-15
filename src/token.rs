@@ -115,6 +115,9 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             };
             tokens.push(current_token)
         }
+        else {
+            panic!("Invalid Token")
+        }
     }
     Ok(tokens)
 }

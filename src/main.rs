@@ -19,7 +19,7 @@ fn main(){
      }
      else{
        let mut tokens = tokenize(&code.trim().to_string()).unwrap();
-       println!("{:?}", parse(tokens).unwrap())
+       println!("{:?}", parse(tokens).expect("Err"))
        }
      }
    }
