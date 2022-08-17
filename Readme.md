@@ -6,4 +6,4 @@ Currently supported operations
 - "-"
 - "/"
 - "*"
-- Variable Declaration
+
