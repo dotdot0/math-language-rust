@@ -21,7 +21,9 @@ pub enum TokenType{
     WhiteSpace,
     Lparen,
     Rparen,
-    Assign
+    Assign,
+    GreaterThan,
+    LessThan,
 }
 
 #[derive(Debug,Clone)]
@@ -110,6 +112,20 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             current_token = Some(Token{
                 ttype : TokenType::Assign,
                 value : String::from("=")
+            });
+            tokens.push(current_token.unwrap())
+        }
+        else if ch == '>'{
+            current_token = Some(Token{
+                ttype: TokenType::GreaterThan,
+                value: String::from(">")
+            });
+            tokens.push(current_token.unwrap())
+        }
+        else if ch == '<'{
+            current_token = Some(Token{
+                ttype: TokenType::LessThan,
+                value: String::from("<")
             });
             tokens.push(current_token.unwrap())
         }
