@@ -24,6 +24,7 @@ pub enum TokenType{
     Assign,
     GreaterThan,
     LessThan,
+    Ident
 }
 
 #[derive(Debug,Clone)]
@@ -129,9 +130,17 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             });
             tokens.push(current_token.unwrap())
         }
+        else if ch.is_alphabetic(){
+            current_token = Some(Token{
+                ttype: TokenType::Ident,
+                value: String::from(ch)
+            });
+            tokens.push(current_token.unwrap())
+        }
         else {
             panic!("Invalid Token")
         }
+
     }
     Ok(tokens)
 }
