@@ -20,7 +20,7 @@ pub struct Assigment{
 }
 
 
-
+//Parser Function
 pub fn parse(tokens: Vec<Token>) -> Result<Ast, String>{
     let token_type: Vec<TokenType> = vec![TokenType::Add, TokenType::Subtract, TokenType::Divide, TokenType::Multiply, TokenType::GreaterThan, TokenType::LessThan];
     let mut expr: Option<Ast> = None;

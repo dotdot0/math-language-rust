@@ -4,12 +4,12 @@ use std::io;
 use std::thread::current;
 use std::any;
 
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum Error{
     NotValidToken
 }
 
-#[derive(Debug, PartialEq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone)]
 pub enum TokenType{
     Start,
     Add,
