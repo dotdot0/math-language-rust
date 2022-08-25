@@ -89,14 +89,14 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             tokens.push(current_token.unwrap())
         }
         else if ch.is_numeric(){
-            let next = code.chars().nth(i + 1).unwrap();
-            let mut number: Option<String> = None;
-            if next.is_numeric(){
-               number = Some(String::from(format!("{}{}", ch, next))) 
-            }
+            //let next = code.chars().nth(i + 1).unwrap();
+            // let mut number: Option<String> = None;
+            // if next.is_numeric(){
+            //    number = Some(String::from(format!("{}{}", ch, next))) 
+            // }
             current_token = Some(Token{
                 ttype : TokenType::Number,
-                value : number.unwrap()
+                value : String::from(ch) 
             });
             tokens.push(current_token.unwrap())
         }
