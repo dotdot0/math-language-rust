@@ -32,6 +32,7 @@ pub fn parse(tokens: Vec<Token>) -> Result<Ast, String>{
                opr: token.value.to_string()
            }))
        }
+
        else if token.ttype == TokenType::Assign{
            expr = Some(Ast::Assigment(Assigment{
                variable: tokens[i - 1].value.to_string(),

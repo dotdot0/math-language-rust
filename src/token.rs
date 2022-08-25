@@ -46,7 +46,7 @@ impl Token{
 pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
     let mut current_token: Option<Token> = None;
     let mut tokens = Vec::new();
-    for ch in code.chars(){
+    for (i, ch) in code.chars().enumerate(){
         if ch == '+'{
             current_token = Some(Token{
                 ttype: TokenType::Add,
@@ -89,9 +89,14 @@ pub fn tokenize(code: &String) -> Result<Vec<Token>, Error>{
             tokens.push(current_token.unwrap())
         }
         else if ch.is_numeric(){
+            let next = code.chars().nth(i + 1).unwrap();
+            let mut number: Option<String> = None;
+            if next.is_numeric(){
+               number = Some(String::from(format!("{}{}", ch, next))) 
+            }
             current_token = Some(Token{
                 ttype : TokenType::Number,
-                value : String::from(ch)
+                value : number.unwrap()
             });
             tokens.push(current_token.unwrap())
         }
